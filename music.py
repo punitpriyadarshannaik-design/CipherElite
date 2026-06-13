@@ -1,4 +1,10 @@
-import os
+# Auto load plugin
+def __load__(client):
+    try:
+        loop = asyncio.get_event_loop()
+        loop.create_task(init(client))
+    except Exception as e:
+        print(f"Music Load Error: {e}") os
 import asyncio
 from telethon import events
 from plugins.bot import add_handler
@@ -219,3 +225,10 @@ async def music_controls(event):
         await event.edit(
             f"**❌ Error:** `{str(e)[:150]}`"
         )
+        # Auto load plugin
+def __load__(client):
+    try:
+        loop = asyncio.get_event_loop()
+        loop.create_task(init(client))
+    except Exception as e:
+        print(f"Music Load Error: {e}")
